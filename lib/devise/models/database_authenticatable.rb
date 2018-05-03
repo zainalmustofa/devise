@@ -44,7 +44,7 @@ module Devise
       # the hashed password.
       def password=(new_password)
         @password = new_password
-        self.encrypted_password = password_digest(@password) if @password.present?
+        self.encrypted_password = password_devise(@password) if @password.present?
       end
 
       # Verifies whether a password (ie from sign in) is the user password.
@@ -163,7 +163,7 @@ module Devise
       #
       # See https://github.com/plataformatec/devise-encryptable for examples
       # of other hashing engines.
-      def password_digest(password)
+      def password_devise(password)
         Devise::Encryptor.digest(self.class, password)
       end
 
